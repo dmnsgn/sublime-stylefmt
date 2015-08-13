@@ -30,7 +30,7 @@ Example:
 
 ```json
 [
-	{ "keys": ["alt+super+j"], "command": "cssfmt" }
+	{ "keys": ["alt+super+f"], "command": "cssfmt" }
 ]
 ```
 
