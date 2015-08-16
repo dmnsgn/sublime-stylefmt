@@ -1,12 +1,16 @@
 'use strict';
 
-var fs = require('fs');
 var cssfmt = require('cssfmt');
+var data = '';
 
-var file = fs.readFileSync(JSON.parse(process.argv[2]).filepath, 'utf-8');
+process.stdin.on('data', function(css) {
+  data += css;
+});
 
-try {
-  process.stdout.write(cssfmt.process(file));
-} catch (err) {
-  throw err;
-}
+process.stdin.on('end', function() {
+  try {
+    process.stdout.write(cssfmt.process(data));
+  } catch (err) {
+    throw err;
+  }
+});

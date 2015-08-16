@@ -25,7 +25,7 @@ class CssfmtCommand(sublime_plugin.TextCommand):
 			return
 
 		for region in self.view.sel():
-			sublime.status_message('CSSfmt: format selections')
+			sublime.status_message('CSSfmt: format region(s)')
 			if region.empty():
 				continue
 			originalBuffer = self.view.substr(region)
@@ -35,9 +35,7 @@ class CssfmtCommand(sublime_plugin.TextCommand):
 
 	def format(self, data):
 		try:
-			return node_bridge(data, BIN_PATH, [json.dumps({
-				'filepath': self.view.file_name()
-			})])
+			return node_bridge(data, BIN_PATH)
 		except Exception as e:
 			sublime.error_message('CSSfmt\n%s' % e)
 
