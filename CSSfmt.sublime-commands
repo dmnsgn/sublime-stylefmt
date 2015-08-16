@@ -1,4 +1,4 @@
 [{
-	"caption": "CSSfmt",
+	"caption": "Run CSSfmt",
 	"command": "cssfmt"
 }]
