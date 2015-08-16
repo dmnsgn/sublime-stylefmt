@@ -9,30 +9,31 @@ try:
 except:
 	from .node_bridge import node_bridge
 
-# monkeypatch `Region` to be iterable
-sublime.Region.totuple = lambda self: (self.a, self.b)
-sublime.Region.__iter__ = lambda self: self.totuple().__iter__()
-
-BIN_PATH = join(sublime.packages_path(), dirname(realpath(__file__)), 'cssfmt.js')
+BIN_PATH = join(dirname(realpath(__file__)), 'cssfmt.js')
 
 class CssfmtCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
+
 		if not self.has_selection():
+			sublime.status_message('CSSfmt: format file')
+
 			region = sublime.Region(0, self.view.size())
 			originalBuffer = self.view.substr(region)
-			fixed = self.fix(originalBuffer)
-			if fixed:
-				self.view.replace(edit, region, fixed)
+			formatted = self.format(originalBuffer)
+			if formatted:
+				self.view.replace(edit, region, formatted)
 			return
+
 		for region in self.view.sel():
+			sublime.status_message('CSSfmt: format selections')
 			if region.empty():
 				continue
 			originalBuffer = self.view.substr(region)
-			fixed = self.fix(originalBuffer)
-			if fixed:
-				self.view.replace(edit, region, fixed)
+			formatted = self.format(originalBuffer)
+			if formatted:
+				self.view.replace(edit, region, formatted)
 
-	def fix(self, data):
+	def format(self, data):
 		try:
 			return node_bridge(data, BIN_PATH, [json.dumps({
 				'filepath': self.view.file_name()
@@ -41,8 +42,4 @@ class CssfmtCommand(sublime_plugin.TextCommand):
 			sublime.error_message('CSSfmt\n%s' % e)
 
 	def has_selection(self):
-		for sel in self.view.sel():
-			start, end = sel
-			if start != end:
-				return True
-		return False
+		return any(not region.empty() for region in self.view.sel())
