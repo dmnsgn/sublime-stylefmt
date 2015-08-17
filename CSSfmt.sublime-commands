@@ -1,4 +1,6 @@
-[{
-	"caption": "Run CSSfmt",
-	"command": "cssfmt"
-}]
+[
+	{
+		"caption": "Run CSSfmt",
+		"command": "cssfmt"
+	}
+]
