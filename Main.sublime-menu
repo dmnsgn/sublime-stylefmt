@@ -1,0 +1,14 @@
+[
+    {
+        "id": "tools",
+        "caption": "Tools",
+        "children":
+        [
+            {
+                "id": "cssfmt",
+                "caption": "Run CSSfmt",
+                "command": "cssfmt"
+            }
+        ]
+    }
+]
