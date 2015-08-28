@@ -1,0 +1,17 @@
+   _____  _____ _____  __           _
+  / ____|/ ____/ ____|/ _|         | |
+ | |    | (___| (___ | |_ _ __ ___ | |_
+ | |     \___ \\___ \|  _| '_ ` _ \| __|
+ | |____ ____) |___) | | | | | | | | |_
+  \_____|_____/_____/|_| |_| |_| |_|\__|
+
+================================================================================
+
+Sublime Text plugin for CSSfmt.
+CSSfmt is a tool that automatically formats CSS source code, inspired by Gofmt,
+and built on top of the PostCSS ecosystem.
+
+================================================================================
+
+https://github.com/morishitter/cssfmt
+https://github.com/dmnsgn/sublime-cssfmt
