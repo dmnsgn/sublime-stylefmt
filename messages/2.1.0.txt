@@ -1,0 +1,16 @@
+Sublime Text plugin for CSSfmt.
+https://github.com/dmnsgn/sublime-cssfmt
+
+
+Version 2.1.0
+********************************************************************************
+
+# Update to CSSfmt 1.3.2
+
+- Set indentation size from .editorconfig
+- Support formatting pseudo-element(::before, ::after)
+- Support formatting @import
+- Handle multiline comments
+- Fix atrule for comments format
+- Change to open 1 brank line between rules
+- Support formatting @font-face
