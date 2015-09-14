@@ -16,7 +16,6 @@ class CssfmtCommand(sublime_plugin.TextCommand):
 
 		if not self.has_selection():
 			sublime.status_message('CSSfmt: format file')
-
 			region = sublime.Region(0, self.view.size())
 			originalBuffer = self.view.substr(region)
 			formatted = self.format(originalBuffer)
@@ -38,6 +37,7 @@ class CssfmtCommand(sublime_plugin.TextCommand):
 			return node_bridge(data, BIN_PATH)
 		except Exception as e:
 			sublime.error_message('CSSfmt\n%s' % e)
+			raise
 
 	def has_selection(self):
 		return any(not region.empty() for region in self.view.sel())
