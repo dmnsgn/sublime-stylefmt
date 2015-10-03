@@ -1,3 +1,15 @@
+## 5.0.8
+* Fixed a missed step in `5.0.7` that caused the module to be published as
+  ES6 code.
+
+## 5.0.7
+* PostCSS now requires that node 0.12 is installed via the engines property
+  in package.json (by Howard Zuo).
+
+## 5.0.6
+* Fix parsing nested at-rule without semicolon (by Matt Drake).
+* Trim `Declaration#value` (by Bogdan Chadkin).
+
 ## 5.0.5
 * Fix multi-tokens property parsing (by Matt Drake).
 
