@@ -29,6 +29,33 @@ Use the Command Pallete (Windows and Linux: <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kb
 
 > Run CSSfmt
 
+## Options
+
+*(Preferences > Package Settings > CSSfmt > Settings - User)*
+
+
+```json
+{
+  "formatOnSave": true
+}
+```
+
+### Project settings
+
+You can override the default and user settings for individual projects. Just add an `"CSSfmt"` object to the `"settings"` object in the project's `.sublime-project` file containing your [project specific settings](http://www.sublimetext.com/docs/3/projects.html).
+
+Example:
+
+```json
+{
+	"settings": {
+		"CSSfmt": {
+			"formatOnSave": false
+		}
+	}
+}
+```
+
 ### Keyboard shortcut
 
 You can also set up a keyboard shortcut to run the command by opening up *Preferences > Key Bindings - User* and adding your shortcut with the `cssfmt` command.
