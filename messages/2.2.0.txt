@@ -1,0 +1,9 @@
+Sublime Text plugin for CSSfmt.
+https://github.com/dmnsgn/sublime-cssfmt
+
+
+Version 2.2.0
+********************************************************************************
+
+	- Add formatOnSave settings
+	- Enhance sublime messages
