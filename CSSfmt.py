@@ -43,3 +43,19 @@ class CssfmtCommand(sublime_plugin.TextCommand):
 
 	def has_selection(self):
 		return any(not region.empty() for region in self.view.sel())
+
+	@staticmethod
+	def get_setting(view, key):
+		settings = view.settings().get('CSSfmt')
+		if settings is None:
+			settings = sublime.load_settings('CSSfmt.sublime-settings')
+		return settings.get(key)
+
+class CssfmtPreSaveCommand(sublime_plugin.EventListener):
+	def on_pre_save(self, view):
+
+		if CssfmtCommand.get_setting(view, 'formatOnSave') is False:
+			return
+
+		if view.window().extract_variables()['file_extension'] in ('css', 'scss'):
+			view.run_command('cssfmt')
