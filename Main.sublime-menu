@@ -1,14 +1,47 @@
 [
-    {
-        "id": "tools",
-        "caption": "Tools",
-        "children":
-        [
-            {
-                "id": "cssfmt",
-                "caption": "Run CSSfmt",
-                "command": "cssfmt"
-            }
-        ]
-    }
+	{
+		"id":"tools",
+		"caption":"Tools",
+		"mnemonic": "t",
+		"children":[
+			{
+				"id":"cssfmt",
+				"caption":"Run CSSfmt",
+				"command":"cssfmt"
+			}
+		]
+	},
+	{
+		"id":"preferences",
+		"caption":"Preferences",
+		"mnemonic":"n",
+		"children":[
+			{
+				"id":"package-settings",
+				"caption":"Package Settings",
+				"mnemonic":"P",
+				"children":[
+					{
+						"caption":"CSSfmt",
+						"children":[
+							{
+								"command":"open_file",
+								"args":{
+									"file":"${packages}/CSSfmt/CSSfmt.sublime-settings"
+								},
+								"caption":"Settings – Default"
+							},
+							{
+								"command":"open_file",
+								"args":{
+									"file":"${packages}/User/CSSfmt.sublime-settings"
+								},
+								"caption":"Settings – User"
+							}
+						]
+					}
+				]
+			}
+		]
+	}
 ]

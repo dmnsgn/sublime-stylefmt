@@ -14,8 +14,10 @@ BIN_PATH = join(dirname(realpath(__file__)), 'cssfmt.js')
 class CssfmtCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 
+		self.sublime_vars = self.view.window().extract_variables()
+
 		if not self.has_selection():
-			sublime.status_message('CSSfmt: format file')
+			sublime.status_message('CSSfmt: format file ' + self.sublime_vars['file'])
 			region = sublime.Region(0, self.view.size())
 			originalBuffer = self.view.substr(region)
 			formatted = self.format(originalBuffer)
@@ -24,7 +26,7 @@ class CssfmtCommand(sublime_plugin.TextCommand):
 			return
 
 		for region in self.view.sel():
-			sublime.status_message('CSSfmt: format region(s)')
+			sublime.status_message('CSSfmt: format region(s) in ' + self.sublime_vars['file'])
 			if region.empty():
 				continue
 			originalBuffer = self.view.substr(region)
@@ -41,3 +43,19 @@ class CssfmtCommand(sublime_plugin.TextCommand):
 
 	def has_selection(self):
 		return any(not region.empty() for region in self.view.sel())
+
+	@staticmethod
+	def get_setting(view, key):
+		settings = view.settings().get('CSSfmt')
+		if settings is None:
+			settings = sublime.load_settings('CSSfmt.sublime-settings')
+		return settings.get(key)
+
+class CssfmtPreSaveCommand(sublime_plugin.EventListener):
+	def on_pre_save(self, view):
+
+		if CssfmtCommand.get_setting(view, 'formatOnSave') is False:
+			return
+
+		if view.window().extract_variables()['file_extension'] in ('css', 'scss'):
+			view.run_command('cssfmt')
