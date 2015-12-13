@@ -14,8 +14,10 @@ BIN_PATH = join(dirname(realpath(__file__)), 'cssfmt.js')
 class CssfmtCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 
+		self.sublime_vars = self.view.window().extract_variables()
+
 		if not self.has_selection():
-			sublime.status_message('CSSfmt: format file')
+			sublime.status_message('CSSfmt: format file ' + self.sublime_vars['file'])
 			region = sublime.Region(0, self.view.size())
 			originalBuffer = self.view.substr(region)
 			formatted = self.format(originalBuffer)
@@ -24,7 +26,7 @@ class CssfmtCommand(sublime_plugin.TextCommand):
 			return
 
 		for region in self.view.sel():
-			sublime.status_message('CSSfmt: format region(s)')
+			sublime.status_message('CSSfmt: format region(s) in ' + self.sublime_vars['file'])
 			if region.empty():
 				continue
 			originalBuffer = self.view.substr(region)
