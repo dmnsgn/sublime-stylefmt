@@ -1,7 +1,7 @@
 import sublime
 import sublime_plugin
 import json
-from os.path import dirname, realpath, join
+from os.path import dirname, realpath, join, splitext
 
 try:
 	# Python 2
@@ -14,7 +14,12 @@ BIN_PATH = join(dirname(realpath(__file__)), 'cssfmt.js')
 class CssfmtCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 
-		self.sublime_vars = self.view.window().extract_variables()
+		if int(sublime.version()) >= 3080:
+			self.sublime_vars = self.view.window().extract_variables()
+		else:
+			self.sublime_vars = {
+				'file': self.view.file_name()
+			}
 
 		if not self.has_selection():
 			sublime.status_message('CSSfmt: format file ' + self.sublime_vars['file'])
@@ -57,5 +62,12 @@ class CssfmtPreSaveCommand(sublime_plugin.EventListener):
 		if CssfmtCommand.get_setting(view, 'formatOnSave') is False:
 			return
 
-		if view.window().extract_variables()['file_extension'] in ('css', 'scss'):
+		if int(sublime.version()) >= 3080:
+			self.sublime_vars = view.window().extract_variables()
+		else:
+			self.sublime_vars = {
+				'file_extension': splitext(view.file_name())[1][1:]
+			}
+
+		if self.sublime_vars['file_extension'] in ('css', 'scss'):
 			view.run_command('cssfmt')
