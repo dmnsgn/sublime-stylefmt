@@ -17,8 +17,10 @@ class CssfmtCommand(sublime_plugin.TextCommand):
 		if int(sublime.version()) >= 3080:
 			self.sublime_vars = self.view.window().extract_variables()
 		else:
+			file = self.view.file_name()
 			self.sublime_vars = {
-				'file': self.view.file_name()
+				'file': file,
+				'file_path': dirname(file)
 			}
 
 		if not self.has_selection():
@@ -41,7 +43,9 @@ class CssfmtCommand(sublime_plugin.TextCommand):
 
 	def format(self, data):
 		try:
-			return node_bridge(data, BIN_PATH)
+			return node_bridge(data, BIN_PATH, [json.dumps({
+					'file_path': self.sublime_vars['file_path']
+				})])
 		except Exception as e:
 			sublime.error_message('CSSfmt\n%s' % e)
 			raise
