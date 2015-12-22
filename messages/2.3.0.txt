@@ -1,0 +1,8 @@
+Sublime Text plugin for CSSfmt.
+https://github.com/dmnsgn/sublime-cssfmt
+
+
+Version 2.3.0
+********************************************************************************
+
+	- Add ability to format unsaved buffer (@zouxifeng)
