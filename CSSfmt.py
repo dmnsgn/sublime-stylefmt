@@ -23,8 +23,9 @@ class CssfmtCommand(sublime_plugin.TextCommand):
 				'file_path': dirname(file)
 			}
 
+		file_name = self.sublime_vars['file'] if 'file' in self.sublime_vars else 'untitled file'
 		if not self.has_selection():
-			sublime.status_message('CSSfmt: format file ' + self.sublime_vars['file'])
+			sublime.status_message('CSSfmt: format file ' +	file_name)
 			region = sublime.Region(0, self.view.size())
 			originalBuffer = self.view.substr(region)
 			formatted = self.format(originalBuffer)
@@ -33,7 +34,7 @@ class CssfmtCommand(sublime_plugin.TextCommand):
 			return
 
 		for region in self.view.sel():
-			sublime.status_message('CSSfmt: format region(s) in ' + self.sublime_vars['file'])
+			sublime.status_message('CSSfmt: format region(s) in ' + file_name)
 			if region.empty():
 				continue
 			originalBuffer = self.view.substr(region)
@@ -43,9 +44,13 @@ class CssfmtCommand(sublime_plugin.TextCommand):
 
 	def format(self, data):
 		try:
-			return node_bridge(data, BIN_PATH, [json.dumps({
+			if 'file_path' in self.sublime_vars:
+				return node_bridge(data, BIN_PATH, [json.dumps({
 					'file_path': self.sublime_vars['file_path']
-				})])
+					})])
+			else:
+				return node_bridge(data, BIN_PATH)
+
 		except Exception as e:
 			sublime.error_message('CSSfmt\n%s' % e)
 			raise
