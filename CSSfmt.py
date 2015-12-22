@@ -23,9 +23,9 @@ class CssfmtCommand(sublime_plugin.TextCommand):
 				'file_path': dirname(file)
 			}
 
-		file_name = self.sublime_vars['file'] if 'file' in self.sublime_vars else 'untitled file'
+		file_name = self.sublime_vars['file'] if 'file' in self.sublime_vars else 'unsaved buffer'
 		if not self.has_selection():
-			sublime.status_message('CSSfmt: format file ' +	file_name)
+			sublime.status_message('CSSfmt: format ' + file_name)
 			region = sublime.Region(0, self.view.size())
 			originalBuffer = self.view.substr(region)
 			formatted = self.format(originalBuffer)
