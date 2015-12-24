@@ -1,6 +1,6 @@
 {
   "name": "sublime-cssfmt",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "Sublime Text plugin for CSSfmt",
   "main": "cssfmt.js",
   "keywords": [

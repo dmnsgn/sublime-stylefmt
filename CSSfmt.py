@@ -1,7 +1,7 @@
 import sublime
 import sublime_plugin
 import json
-from os.path import dirname, realpath, join, splitext
+from os.path import dirname, realpath, join, splitext, basename
 
 try:
 	# Python 2
@@ -9,11 +9,23 @@ try:
 except:
 	from .node_bridge import node_bridge
 
-BIN_PATH = join(dirname(realpath(__file__)), 'cssfmt.js')
+BIN_PATH = join(sublime.packages_path(), dirname(realpath(__file__)), 'cssfmt.js')
+
+
+def get_setting(view, key):
+	settings = view.settings().get('CSSfmt')
+	if settings is None:
+		settings = sublime.load_settings('CSSfmt.sublime-settings')
+	return settings.get(key)
+
+
+def is_valid_syntax(view):
+	return splitext(basename(view.settings().get('syntax')))[0] in ('CSS', 'SCSS')
+
 
 class CssfmtCommand(sublime_plugin.TextCommand):
-	def run(self, edit):
 
+	def run(self, edit):
 		if int(sublime.version()) >= 3080:
 			self.sublime_vars = self.view.window().extract_variables()
 		else:
@@ -24,6 +36,7 @@ class CssfmtCommand(sublime_plugin.TextCommand):
 			}
 
 		file_name = self.sublime_vars['file'] if 'file' in self.sublime_vars else 'unsaved buffer'
+
 		if not self.has_selection():
 			sublime.status_message('CSSfmt: format ' + file_name)
 			region = sublime.Region(0, self.view.size())
@@ -58,25 +71,9 @@ class CssfmtCommand(sublime_plugin.TextCommand):
 	def has_selection(self):
 		return any(not region.empty() for region in self.view.sel())
 
-	@staticmethod
-	def get_setting(view, key):
-		settings = view.settings().get('CSSfmt')
-		if settings is None:
-			settings = sublime.load_settings('CSSfmt.sublime-settings')
-		return settings.get(key)
 
 class CssfmtPreSaveCommand(sublime_plugin.EventListener):
+
 	def on_pre_save(self, view):
-
-		if CssfmtCommand.get_setting(view, 'formatOnSave') is False:
-			return
-
-		if int(sublime.version()) >= 3080:
-			self.sublime_vars = view.window().extract_variables()
-		else:
-			self.sublime_vars = {
-				'file_extension': splitext(view.file_name())[1][1:]
-			}
-
-		if self.sublime_vars['file_extension'] in ('css', 'scss'):
+		if get_setting(view, 'formatOnSave') is True and is_valid_syntax(view):
 			view.run_command('cssfmt')
