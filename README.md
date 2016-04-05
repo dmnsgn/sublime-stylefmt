@@ -1,11 +1,11 @@
-# sublime-cssfmt
-Sublime Text plugin for [CSSfmt](https://github.com/morishitter/cssfmt)
+# sublime-stylefmt
+Sublime Text plugin for [Stylefmt](https://github.com/morishitter/stylefmt)
 
 ## Install
 
 ### Package Control
 
-Install `CSSfmt` with [Package Control](https://packagecontrol.io/packages/CSSfmt) and restart Sublime.
+Install `Stylefmt` with [Package Control](https://packagecontrol.io/packages/Stylefmt) and restart Sublime.
 
 **You need to have [Node.js](http://nodejs.org) installed.**  
 Make sure it's in your $PATH by running `node -v` in your command-line.
@@ -19,7 +19,7 @@ Make sure it's in your $PATH by running `node -v` in your command-line.
 
 2) Select *Package Control > Add Repository*
 
-3) Paste in https://github.com/dmnsgn/sublime-cssfmt
+3) Paste in https://github.com/dmnsgn/sublime-stylefmt
 
 ## Usage 
 
@@ -27,11 +27,11 @@ Make sure it's in your $PATH by running `node -v` in your command-line.
 
 Use the Command Pallete (Windows and Linux: <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>p</kbd>, OSX: <kbd>cmd</kbd>+<kbd>shift</kbd>+<kbd>p</kbd>) and run:
 
-> Run CSSfmt
+> Run Stylefmt
 
 ## Options
 
-*(Preferences > Package Settings > CSSfmt > Settings - User)*
+*(Preferences > Package Settings > Stylefmt > Settings - User)*
 
 
 ```json
@@ -42,14 +42,14 @@ Use the Command Pallete (Windows and Linux: <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kb
 
 ### Project settings
 
-You can override the default and user settings for individual projects. Just add an `"CSSfmt"` object to the `"settings"` object in the project's `.sublime-project` file containing your [project specific settings](http://www.sublimetext.com/docs/3/projects.html).
+You can override the default and user settings for individual projects. Just add an `"Stylefmt"` object to the `"settings"` object in the project's `.sublime-project` file containing your [project specific settings](http://www.sublimetext.com/docs/3/projects.html).
 
 Example:
 
 ```json
 {
 	"settings": {
-		"CSSfmt": {
+		"Stylefmt": {
 			"formatOnSave": false
 		}
 	}
@@ -58,13 +58,13 @@ Example:
 
 ### Keyboard shortcut
 
-You can also set up a keyboard shortcut to run the command by opening up *Preferences > Key Bindings - User* and adding your shortcut with the `cssfmt` command.
+You can also set up a keyboard shortcut to run the command by opening up *Preferences > Key Bindings - User* and adding your shortcut with the `stylefmt` command.
 
 Example:
 
 ```json
 [
-	{ "keys": ["alt+super+f"], "command": "cssfmt" }
+	{ "keys": ["alt+super+f"], "command": "stylefmt" }
 ]
 ```
 

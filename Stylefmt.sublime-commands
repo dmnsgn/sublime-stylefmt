@@ -1,0 +1,6 @@
+[
+	{
+		"caption": "Run Stylefmt",
+		"command": "stylefmt"
+	}
+]
