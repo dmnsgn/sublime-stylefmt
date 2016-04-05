@@ -1,21 +1,21 @@
 {
-  "name": "sublime-cssfmt",
-  "version": "2.3.2",
+  "name": "sublime-stylefmt",
+  "version": "3.0.0",
   "description": "Sublime Text plugin for CSSfmt",
-  "main": "cssfmt.js",
+  "main": "stylefmt.js",
   "keywords": [
     "css",
-    "cssfmt",
+    "stylefmt",
     "sublime-plugin"
   ],
   "author": "Damien Seguin <https://twitter.com/dmnsgn>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dmnsgn/sublime-cssfmt"
+    "url": "https://github.com/dmnsgn/sublime-stylefmt"
   },
   "license": "ISC",
   "dependencies": {
-    "cssfmt": "2.1.3"
+    "stylefmt": "3.0.0"
   },
   "engines": {
     "node": ">=0.10.0"

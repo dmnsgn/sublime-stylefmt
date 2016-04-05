@@ -1,0 +1,9 @@
+Sublime Text plugin for CSSfmt.
+https://github.com/dmnsgn/sublime-stylefmt
+
+
+Version 3.0.0
+********************************************************************************
+
+	- Rename to stylefmt
+	- stylelint functionality might not work yet

@@ -5,9 +5,9 @@
 		"mnemonic": "t",
 		"children":[
 			{
-				"id":"cssfmt",
-				"caption":"Run CSSfmt",
-				"command":"cssfmt"
+				"id":"stylefmt",
+				"caption":"Run Stylefmt",
+				"command":"stylefmt"
 			}
 		]
 	},
@@ -22,19 +22,19 @@
 				"mnemonic":"P",
 				"children":[
 					{
-						"caption":"CSSfmt",
+						"caption":"Stylefmt",
 						"children":[
 							{
 								"command":"open_file",
 								"args":{
-									"file":"${packages}/CSSfmt/CSSfmt.sublime-settings"
+									"file":"${packages}/Stylefmt/Stylefmt.sublime-settings"
 								},
 								"caption":"Settings – Default"
 							},
 							{
 								"command":"open_file",
 								"args":{
-									"file":"${packages}/User/CSSfmt.sublime-settings"
+									"file":"${packages}/User/Stylefmt.sublime-settings"
 								},
 								"caption":"Settings – User"
 							}
