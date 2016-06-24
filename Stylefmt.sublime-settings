@@ -1,3 +1,4 @@
 {
-  "formatOnSave": false
+  "formatOnSave": false,
+  "scssSyntax": "SCSS"
 }

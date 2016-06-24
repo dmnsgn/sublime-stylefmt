@@ -36,7 +36,8 @@ Use the Command Pallete (Windows and Linux: <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kb
 
 ```json
 {
-  "formatOnSave": true
+  "formatOnSave": true,
+  "scssSyntax": "SCSS"
 }
 ```
 
@@ -50,7 +51,8 @@ Example:
 {
 	"settings": {
 		"Stylefmt": {
-			"formatOnSave": false
+			"formatOnSave": false,
+			"scssSyntax": "SCSS"
 		}
 	}
 }

@@ -20,7 +20,8 @@ def get_setting(view, key):
 
 
 def is_valid_syntax(view):
-	return splitext(basename(view.settings().get('syntax')))[0] in ('CSS', 'SCSS')
+	supported_syntaxes = [get_setting(view, 'scssSyntax'), 'CSS']
+	return splitext(basename(view.settings().get('syntax')))[0] in supported_syntaxes
 
 
 class StylefmtCommand(sublime_plugin.TextCommand):
