@@ -1,0 +1,9 @@
+Sublime Text plugin for Stylefmt.
+https://github.com/dmnsgn/sublime-stylefmt
+
+
+Version 4.0.0
+********************************************************************************
+
+	- Use version 4.0.0
+	- .stylelintrc still need more work

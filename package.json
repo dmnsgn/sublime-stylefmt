@@ -1,7 +1,7 @@
 {
   "name": "sublime-stylefmt",
-  "version": "3.1.0",
-  "description": "Sublime Text plugin for CSSfmt",
+  "version": "4.0.0",
+  "description": "Sublime Text plugin for Stylefmt",
   "main": "stylefmt.js",
   "keywords": [
     "css",
@@ -15,7 +15,7 @@
   },
   "license": "ISC",
   "dependencies": {
-    "stylefmt": "3.0.0"
+    "stylefmt": "4.0.0"
   },
   "engines": {
     "node": ">=0.10.0"
