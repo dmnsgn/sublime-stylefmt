@@ -14,9 +14,11 @@ process.stdin.on('data', function(css) {
 });
 
 process.stdin.on('end', function() {
-  try {
-    process.stdout.write(stylefmt.process(data));
-  } catch (err) {
-    throw err;
-  }
+  stylefmt.process(data).then(function(result) {
+    try {
+      process.stdout.write(result.css);
+    } catch (err) {
+      throw err;
+    }
+  });
 });
