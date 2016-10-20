@@ -1,6 +1,9 @@
 'use strict';
 
+var postcss = require('postcss');
+var scss = require('postcss-scss');
 var stylefmt = require('stylefmt');
+
 var data = '';
 
 // Get options if needed
@@ -14,7 +17,7 @@ process.stdin.on('data', function(css) {
 });
 
 process.stdin.on('end', function() {
-  stylefmt.process(data).then(function(result) {
+  postcss([ stylefmt ]).process(data, { syntax: scss }).then(function(result) {
     try {
       process.stdout.write(result.css);
     } catch (err) {
