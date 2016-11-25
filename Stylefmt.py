@@ -9,7 +9,7 @@ try:
 except:
 	from .node_bridge import node_bridge
 
-BIN_PATH = join(sublime.packages_path(), dirname(realpath(__file__)), 'stylefmt.js')
+BIN_PATH = join(sublime.packages_path(), dirname(realpath(__file__)), 'node_modules/stylefmt/bin/cli.js')
 
 
 def get_setting(view, key):
@@ -32,8 +32,7 @@ class StylefmtCommand(sublime_plugin.TextCommand):
 		else:
 			file = self.view.file_name()
 			self.sublime_vars = {
-				'file': file,
-				'file_path': dirname(file)
+				'file': file
 			}
 
 		file_name = self.sublime_vars['file'] if 'file' in self.sublime_vars else 'unsaved buffer'
@@ -58,10 +57,8 @@ class StylefmtCommand(sublime_plugin.TextCommand):
 
 	def format(self, data):
 		try:
-			if 'file_path' in self.sublime_vars:
-				return node_bridge(data, BIN_PATH, [json.dumps({
-					'file_path': self.sublime_vars['file_path']
-					})])
+			if 'file' in self.sublime_vars:
+				return node_bridge(data, BIN_PATH, ['--stdin-filename', self.sublime_vars['file']])
 			else:
 				return node_bridge(data, BIN_PATH)
 

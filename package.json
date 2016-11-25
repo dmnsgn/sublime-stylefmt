@@ -15,7 +15,7 @@
   },
   "license": "ISC",
   "dependencies": {
-    "stylefmt": "4.3.1"
+    "stylefmt": "^5.0.0"
   },
   "engines": {
     "node": ">=4.2.0"
