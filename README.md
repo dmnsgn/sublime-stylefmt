@@ -33,11 +33,13 @@ Use the Command Pallete (Windows and Linux: <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kb
 
 *(Preferences > Package Settings > Stylefmt > Settings - User)*
 
+The *format on save* functionality can be extended to be applied on specific syntaxes or extensions.
 
 ```json
 {
-  "formatOnSave": true,
-  "scssSyntax": "SCSS"
+  "formatOnSave": false,
+  "syntaxes": ["SCSS"],
+  "extensions": [".scss"]
 }
 ```
 
@@ -52,7 +54,8 @@ Example:
 	"settings": {
 		"Stylefmt": {
 			"formatOnSave": false,
-			"scssSyntax": "SCSS"
+			"syntaxes": ["SCSS"],
+			"extensions": [".scss"]
 		}
 	}
 }

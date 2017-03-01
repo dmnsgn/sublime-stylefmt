@@ -1,0 +1,9 @@
+Sublime Text plugin for Stylefmt.
+https://github.com/dmnsgn/sublime-stylefmt
+
+
+Version 5.0.0
+********************************************************************************
+
+	- Use version 5.1.2
+	- Enable more control on format on save functionality: option can be extended to be applied on specific syntaxes or extensions
