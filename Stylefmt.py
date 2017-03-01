@@ -18,10 +18,21 @@ def get_setting(view, key):
 		settings = sublime.load_settings('Stylefmt.sublime-settings')
 	return settings.get(key)
 
+def get_syntax(view):
+	return splitext(basename(view.settings().get('syntax')))[0];
 
-def is_valid_syntax(view):
-	supported_syntaxes = [get_setting(view, 'scssSyntax'), 'CSS']
-	return splitext(basename(view.settings().get('syntax')))[0] in supported_syntaxes
+def get_extension(view):
+	file_name = view.file_name();
+	return file_name and splitext(file_name)[1];
+
+def get_supported_syntaxes(view):
+	return get_setting(view, 'syntaxes') + ['CSS']
+
+def get_supported_extensions(view):
+	return get_setting(view, 'extensions') + ['.css']
+
+def is_formatable(view):
+	return get_syntax(view) in get_supported_syntaxes(view) or get_extension(view) in get_supported_extensions(view)
 
 
 class StylefmtCommand(sublime_plugin.TextCommand):
@@ -73,5 +84,5 @@ class StylefmtCommand(sublime_plugin.TextCommand):
 class StylefmtPreSaveCommand(sublime_plugin.EventListener):
 
 	def on_pre_save(self, view):
-		if get_setting(view, 'formatOnSave') is True and is_valid_syntax(view):
+		if get_setting(view, 'formatOnSave') is True and is_formatable(view):
 			view.run_command('stylefmt')
