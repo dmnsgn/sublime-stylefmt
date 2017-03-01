@@ -1,6 +1,6 @@
 {
   "name": "sublime-stylefmt",
-  "version": "4.3.1",
+  "version": "5.0.0",
   "description": "Sublime Text plugin for Stylefmt",
   "main": "stylefmt.js",
   "keywords": [

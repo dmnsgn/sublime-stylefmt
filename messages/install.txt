@@ -10,10 +10,9 @@
 ================================================================================
 
 Sublime Text plugin for Stylefmt.
-Stylefmt is a tool that automatically formats CSS source code, inspired by Gofmt,
-and built on top of the PostCSS ecosystem.
+Stylefmt is a tool that automatically formats CSS according to stylelint rules.
 
 ================================================================================
 
-https://github.com/morishitter/cssfmt
-https://github.com/dmnsgn/sublime-cssfmt
+https://github.com/morishitter/stylefmt
+https://github.com/dmnsgn/sublime-stylefmt
