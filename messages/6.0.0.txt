@@ -1,0 +1,9 @@
+Sublime Text plugin for Stylefmt.
+https://github.com/dmnsgn/sublime-stylefmt
+
+
+Version 6.0.0
+********************************************************************************
+
+	- Use version 6.0.0
+	- More info here: https://github.com/morishitter/stylefmt/blob/master/CHANGELOG.md#v600

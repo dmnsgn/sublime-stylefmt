@@ -1,3 +1,23 @@
+3.8.4 / 2017-05-08
+------------------
+
+- Dumper: prevent space after dash for arrays that wrap, #343.
+
+
+3.8.3 / 2017-04-05
+------------------
+
+- Should not allow numbers to begin and end with underscore, #335.
+
+
+3.8.2 / 2017-03-02
+------------------
+
+- Fix `!!float 123` (integers) parse, #333.
+- Don't allow leading zeros in floats (except 0, 0.xxx).
+- Allow positive exponent without sign in floats.
+
+
 3.8.1 / 2017-02-07
 ------------------
 
