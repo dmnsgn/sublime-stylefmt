@@ -19,28 +19,49 @@ SCSS source code alongside CSS.
 <img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg" alt="Sponsored by Evil Martians" width="236" height="54">
 </a>
 
-## Usage
 
-### SCSS Transformations
+## Install
 
-The main use case of this plugin is to apply PostCSS transformations directly
-to SCSS source code. For example, if you ship a theme written in SCSS and need
-[Autoprefixer] to add the appropriate vendor prefixes to it; or you need to
-lint SCSS with a plugin such as [Stylelint].
-
-```js
-var syntax = require('postcss-scss');
-postcss(plugins).process(scss, { syntax: syntax }).then(function (result) {
-    result.content // SCSS with transformations
-});
+```sh
+npm --save install postcss-scss
 ```
 
-[Autoprefixer]: https://github.com/postcss/autoprefixer
+or (if you use [Yarn](https://yarnpkg.com/))
+
+```sh
+yarn add --dev postcss-scss
+```
+
+
+## Usage
+
+There are two ways to use this parser:
+
+### 1. SCSS Transformations
+
+The main use case of this plugin is to apply PostCSS transformations directly
+to SCSS source code.
+
+For example, you can lint SCSS source with [Stylelint]
+and linter will automatically fix issues in the source.
+
+```js
+// postcss.config.js
+module.exports = {
+  syntax: 'postcss-scss',
+  plugins: {
+    …
+  }
+}
+```
+
 [Stylelint]:    http://stylelint.io/
 
-### Inline Comments for PostCSS
 
-This module also enables parsing of single-line comments in CSS source code.
+### 2. Inline Comments for PostCSS
+
+Also you can use this parser just to add `//` single-line comment
+to your PostCSS project (without any Sass):
 
 ```scss
 :root {
@@ -53,10 +74,13 @@ Note that you don’t need a special stringifier to handle the output; the defau
 one will automatically convert single line comments into block comments.
 
 ```js
-var syntax = require('postcss-scss');
-postcss(plugins).process(scss, { parser: syntax }).then(function (result) {
-    result.css // CSS with normal comments
-});
+// postcss.config.js
+module.exports = {
+  parser: 'postcss-scss',
+  plugins: {
+    …
+  }
+}
 ```
 
 If you want Sass behaviour with removing inline comments, you can use
