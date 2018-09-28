@@ -8,13 +8,13 @@ Disallow unknown type selectors.
  * This type selector */
 ```
 
-This rule considers tags defined in the HTML and SVG Specifications to be known.
+This rule considers tags defined in the HTML, SVG, and MathML specifications to be known.
 
 ## Options
 
 ### `true`
 
-The following patterns are considered warnings:
+The following patterns are considered violations:
 
 ```css
 unknown {}
@@ -24,7 +24,7 @@ unknown {}
 tag {}
 ```
 
-The following patterns are *not* considered warnings:
+The following patterns are *not* considered violations:
 
 ```css
 input {}
@@ -40,19 +40,39 @@ li > a {}
 
 ## Optional secondary options
 
-### `ignore: ["default-namespace"]`
+### `ignore: ["custom-elements", "default-namespace"]`
+
+#### `"custom-elements"`
+
+Allow custom elements.
+
+The following patterns are considered violations:
+
+```css
+unknown {}
+```
+
+```css
+x-Foo {}
+```
+
+The following patterns are *not* considered violations:
+
+```css
+x-foo {}
+```
 
 #### `"default-namespace"`
 
 Allow unknown type selectors if they belong to the default namespace.
 
-The following patterns are considered warnings:
+The following patterns are considered violations:
 
 ```css
 namespace|unknown {}
 ```
 
-The following patterns are *not* considered warnings:
+The following patterns are *not* considered violations:
 
 ```css
 unknown {}
@@ -66,7 +86,7 @@ Given:
 ["/^my-/", "custom-namespace"]
 ```
 
-The following patterns are *not* considered warnings:
+The following patterns are *not* considered violations:
 
 ```css
 custom-namespace|unknown {}
@@ -88,7 +108,7 @@ Given:
 ["/^my-/", "custom-type"]
 ```
 
-The following patterns are *not* considered warnings:
+The following patterns are *not* considered violations:
 
 ```css
 custom-type {}
