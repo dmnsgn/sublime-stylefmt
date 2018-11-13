@@ -1,6 +1,6 @@
 {
   "name": "sublime-stylefmt",
-  "version": "6.0.2",
+  "version": "6.0.3",
   "description": "Sublime Text plugin for Stylefmt",
   "main": "stylefmt.js",
   "keywords": [
@@ -15,7 +15,7 @@
   },
   "license": "ISC",
   "dependencies": {
-    "stylefmt": "^6.0.2"
+    "stylefmt": "^6.0.3"
   },
   "engines": {
     "node": ">=4.2.0"
