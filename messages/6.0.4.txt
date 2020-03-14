@@ -1,0 +1,9 @@
+Sublime Text plugin for Stylefmt.
+https://github.com/dmnsgn/sublime-stylefmt
+
+
+Version 6.0.4
+********************************************************************************
+
+	- Add cli arguments
+	- More info here: https://github.com/morishitter/stylefmt#in-command-line
