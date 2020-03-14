@@ -68,10 +68,19 @@ class StylefmtCommand(sublime_plugin.TextCommand):
 
 	def format(self, data):
 		try:
+			args = []
+			if get_setting(self.view, 'config-basedir') is not None:
+				args.extend(('--config-basedir', get_setting(self.view, 'config-basedir')))
+			if get_setting(self.view, 'config') is not None:
+				args.extend(('--config', get_setting(self.view, 'config')))
+			if get_setting(self.view, 'ignore-path') is not None:
+				args.extend(('--ignore-path', get_setting(self.view, 'ignore-path')))
+
 			if 'file' in self.sublime_vars:
-				return node_bridge(data, BIN_PATH, ['--stdin-filename', self.sublime_vars['file']])
+				args.extend(('--stdin-filename', self.sublime_vars['file']))
+				return node_bridge(data, BIN_PATH, args)
 			else:
-				return node_bridge(data, BIN_PATH)
+				return node_bridge(data, BIN_PATH, args)
 
 		except Exception as e:
 			sublime.error_message('Stylefmt\n%s' % e)
