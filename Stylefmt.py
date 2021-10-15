@@ -9,7 +9,7 @@ try:
 except:
 	from .node_bridge import node_bridge
 
-BIN_PATH = join(sublime.packages_path(), dirname(realpath(__file__)), 'node_modules/stylefmt/bin/cli.js')
+BIN_PATH = join(sublime.packages_path(), dirname(realpath(__file__)), 'node_modules/@ronilaukkarinen/stylefmt/bin/cli.js')
 
 
 def get_setting(view, key):
