@@ -15,7 +15,7 @@
   },
   "license": "ISC",
   "dependencies": {
-    "stylefmt": "^6.0.3"
+    "@ronilaukkarinen/stylefmt": "6.2.4"
   },
   "engines": {
     "node": ">=4.2.0"
